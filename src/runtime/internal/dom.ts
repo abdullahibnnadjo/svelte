@@ -168,7 +168,8 @@ export function append_hydration(target: NodeEx, node: NodeEx) {
 	if (is_hydrating) {
 		init_hydrate(target);
 
-		if ((target.actual_end_child === undefined) || ((target.actual_end_child !== null) && (target.actual_end_child.parentElement !== target))) {
+		//parentElement returns undefined from textNode on some browsers
+		if ((target.actual_end_child === undefined) || ((target.actual_end_child !== null) && (target.actual_end_child.parentNode !== target))) {
 			target.actual_end_child = target.firstChild;
 		}
 
