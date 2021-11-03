@@ -70,10 +70,10 @@ export function writable<T>(value?: T, start: StartStopNotifier<T> = noop): Writ
 			value = new_value;
 			if (stop) { // store is ready
 				const run_queue = !subscriber_queue.length;
-				for (const subscriber of subscribers) {
+				subscribers.forEach(subscriber => {
 					subscriber[1]();
 					subscriber_queue.push(subscriber, value);
-				}
+				});
 				if (run_queue) {
 					for (let i = 0; i < subscriber_queue.length; i += 2) {
 						subscriber_queue[i][0](subscriber_queue[i + 1]);

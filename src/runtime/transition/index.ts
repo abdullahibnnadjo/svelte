@@ -1,6 +1,6 @@
 import { cubicOut, cubicInOut, linear } from 'svelte/easing';
 import { assign, is_function } from 'svelte/internal';
-import CompatMap from 'svelte/compat';
+import { CompatMap } from '../compat';
 
 export type EasingFunction = (t: number) => number;
 

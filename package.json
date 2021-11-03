@@ -129,6 +129,7 @@
     "c8": "^5.0.1",
     "code-red": "^0.2.3",
     "codecov": "^3.5.0",
+    "core-js": "^3.19.1",
     "css-tree": "^1.1.2",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.24.2",
@@ -159,6 +160,6 @@
     "instrument": true
   },
   "dependencies": {
-    "es6-map": "^0.1.5"
+    "core-js-pure": "^3.19.1"
   }
 }

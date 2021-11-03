@@ -1,6 +1,7 @@
 import { Readable, writable } from 'svelte/store';
 import { loop, now, Task } from 'svelte/internal';
 import { is_date } from './utils';
+import { CompatPromise } from '../compat';
 
 interface TickContext<T> {
 	inv_mass: number;
@@ -89,7 +90,7 @@ export function spring<T=any>(value?: T, opts: SpringOpts = {}): Spring<T> {
 			last_time = now();
 			last_value = new_value;
 			store.set(value = target_value);
-			return Promise.resolve();
+			return CompatPromise.resolve();
 		} else if (opts.soft) {
 			const rate = opts.soft === true ? .5 : +opts.soft;
 			inv_mass_recovery_rate = 1 / (rate * 60);
@@ -129,7 +130,7 @@ export function spring<T=any>(value?: T, opts: SpringOpts = {}): Spring<T> {
 			});
 		}
 
-		return new Promise(fulfil => {
+		return new CompatPromise(fulfil => {
 			task.promise.then(() => {
 				if (token === current_token) fulfil();
 			});

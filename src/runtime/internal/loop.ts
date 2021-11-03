@@ -1,11 +1,12 @@
 import { raf } from './environment';
+import { CompatSet, CompatPromise } from '../compat';
 
 export interface Task { abort(): void; promise: Promise<void> }
 
 type TaskCallback = (now: number) => boolean | void;
 type TaskEntry = { c: TaskCallback; f: () => void };
 
-const tasks = new Set<TaskEntry>();
+const tasks = new CompatSet();
 
 function run_tasks(now: number) {
 	tasks.forEach(task => {
@@ -35,7 +36,7 @@ export function loop(callback: TaskCallback): Task {
 	if (tasks.size === 0) raf(run_tasks);
 
 	return {
-		promise: new Promise(fulfill => {
+		promise: new CompatPromise(fulfill => {
 			tasks.add(task = { c: callback, f: fulfill });
 		}),
 		abort() {

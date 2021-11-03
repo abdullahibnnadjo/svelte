@@ -6,6 +6,7 @@ import { custom_event } from './dom';
 import { add_render_callback } from './scheduler';
 import { TransitionConfig } from '../transition';
 import { Fragment } from './Component';
+import { CompatPromise } from '../compat';
 
 let promise: Promise<void> | null;
 type INTRO = 1;
@@ -27,7 +28,7 @@ interface Outro {
 
 function wait() {
 	if (!promise) {
-		promise = Promise.resolve();
+		promise = CompatPromise.resolve();
 		promise.then(() => {
 			promise = null;
 		});

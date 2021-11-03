@@ -505,10 +505,10 @@ export function claim_html_tag(nodes) {
 	detach(html_tag_nodes[0]);
 	detach(html_tag_nodes[html_tag_nodes.length - 1]);
 	const claimed_nodes = html_tag_nodes.slice(1, html_tag_nodes.length - 1);
-	for (const n of claimed_nodes) {
+	claimed_nodes.forEach(n => {
 		n.claim_order = nodes.claim_info.total_claimed;
 		nodes.claim_info.total_claimed += 1;
-	}
+	});
 	return new HtmlTagHydration(claimed_nodes);
 }
 
@@ -715,8 +715,11 @@ export class HtmlTagHydration extends HtmlTag {
 
 export function attribute_to_object(attributes: NamedNodeMap) {
 	const result = {};
-	for (const attribute of attributes) {
+	let i = 0;
+	while (i < attributes.length) {
+		const attribute = attributes[i];
 		result[attribute.name] = attribute.value;
+		++i;
 	}
 	return result;
 }

@@ -1,5 +1,5 @@
 import { transition_in, transition_out } from './transitions';
-import CompatMap from 'svelte/compat';
+import { CompatMap } from '../compat';
 
 export function destroy_block(block, lookup) {
 	block.d(1);
