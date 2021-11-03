@@ -3,6 +3,7 @@ import { current_component, set_current_component } from './lifecycle';
 import { blank_object, is_empty, is_function, run, run_all, noop } from './utils';
 import { children, detach, start_hydrating, end_hydrating } from './dom';
 import { transition_in } from './transitions';
+import CompatMap from 'svelte/compat';
 
 /**
  * INTERNAL, DO NOT USE. Code may change at any time.
@@ -124,7 +125,7 @@ export function init(component, options, instance, create_fragment, not_equal, p
 		on_disconnect: [],
 		before_update: [],
 		after_update: [],
-		context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+		context: new CompatMap(options.context || (parent_component ? parent_component.$$.context : [])),
 
 		// everything else
 		callbacks: blank_object(),

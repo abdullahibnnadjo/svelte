@@ -33,6 +33,10 @@
       "import": "./index.mjs",
       "require": "./index.js"
     },
+    "./compat": {
+      "import": "./compat.mjs",
+      "require": "./compat/index.js"
+    },
     "./compiler": {
       "import": "./compiler.mjs",
       "require": "./compiler.js"
@@ -153,5 +157,8 @@
     ],
     "sourceMap": true,
     "instrument": true
+  },
+  "dependencies": {
+    "es6-map": "^0.1.5"
   }
 }

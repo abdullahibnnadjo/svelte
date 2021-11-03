@@ -1,4 +1,5 @@
 import { transition_in, transition_out } from './transitions';
+import CompatMap from 'svelte/compat';
 
 export function destroy_block(block, lookup) {
 	block.d(1);
@@ -30,8 +31,8 @@ export function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list
 	while (i--) old_indexes[old_blocks[i].key] = i;
 
 	const new_blocks = [];
-	const new_lookup = new Map();
-	const deltas = new Map();
+	const new_lookup = new CompatMap();
+	const deltas = new CompatMap();
 
 	i = n;
 	while (i--) {

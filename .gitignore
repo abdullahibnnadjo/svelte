@@ -23,6 +23,7 @@ node_modules
 _actual*.*
 _output
 /types
+/compat
 
 /site/.svelte-kit/
 /site/build/

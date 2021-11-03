@@ -1,5 +1,6 @@
 import { cubicOut, cubicInOut, linear } from 'svelte/easing';
 import { assign, is_function } from 'svelte/internal';
+import CompatMap from 'svelte/compat';
 
 export type EasingFunction = (t: number) => number;
 
@@ -213,8 +214,8 @@ type ClientRectMap = Map<any, { rect: ClientRect }>;
 export function crossfade({ fallback, ...defaults }: CrossfadeParams & {
 	fallback?: (node: Element, params: CrossfadeParams, intro: boolean) => TransitionConfig;
 }) {
-	const to_receive: ClientRectMap = new Map();
-	const to_send: ClientRectMap = new Map();
+	const to_receive: ClientRectMap = new CompatMap();
+	const to_send: ClientRectMap = new CompatMap();
 
 	function crossfade(from: ClientRect, node: Element, params: CrossfadeParams): TransitionConfig {
 		const {
