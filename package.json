@@ -160,6 +160,8 @@
     "instrument": true
   },
   "dependencies": {
-    "core-js-pure": "^3.19.1"
+    "core-js-pure": "^3.19.1",
+    "performance-now": "^2.1.0",
+    "raf": "^3.4.1"
   }
 }
