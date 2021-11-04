@@ -82,6 +82,10 @@ export default [
 					__VERSION__: pkg.version
 				}),
 				ts_plugin,
+				resolve(),
+				commonjs({
+					include: ['node_modules/**']
+				}),
 				{
 					writeBundle(bundle) {
 						if (dir === 'internal') {
