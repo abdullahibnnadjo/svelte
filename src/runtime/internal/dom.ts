@@ -254,6 +254,21 @@ export function empty() {
 }
 
 export function listen(node: EventTarget, event: string, handler: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | EventListenerOptions) {
+	//Fix IE9 not firing 'oninput' when backspace is pressed 
+	if (event === 'input') {
+		if (navigator.userAgent.indexOf('MSIE 9') === -1) return;
+
+		node.addEventListener('keydown', () => {
+		  const el = document.activeElement;
+
+		  //@ts-expect-error element.type exists on ie
+		  if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && el.type === 'text')) {
+			const ev = document.createEvent('CustomEvent');
+			ev.initCustomEvent('input', true, true, {});
+			el.dispatchEvent(ev);
+		  }
+	  });
+	}
 	node.addEventListener(event, handler, options);
 	return () => node.removeEventListener(event, handler, options);
 }
