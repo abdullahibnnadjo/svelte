@@ -1,3 +1,5 @@
+// /!\ Always import this file by svelte/compat — not relative path — to avoid code duplication when js are generated
+
 // pure ponyfills (do not pollute global namespace)
 import CompatMap from 'core-js-pure/stable/map';
 import CompatPromise from 'core-js-pure/stable/promise';
@@ -11,7 +13,7 @@ import performanceNow from 'performance-now';
 import 'core-js/modules/es.object.keys'; //dev.ts
 import 'core-js/modules/es.string.starts-with';
 import 'core-js/modules/es.array.fill';
-import 'core-js/modules/es.array.from'; 
+import 'core-js/modules/es.array.from';
 import 'core-js/modules/es.array.sort';
 import 'core-js/modules/es.typed-array.int32-array.js'; //dom.ts
 
