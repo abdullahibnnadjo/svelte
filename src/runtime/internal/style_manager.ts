@@ -1,3 +1,4 @@
+import { CompatSet } from 'svelte/compat';
 import { append_empty_stylesheet, get_root_for_style } from './dom';
 import { raf } from './environment';
 
@@ -6,7 +7,7 @@ interface ExtendedDoc extends Document {
 	__svelte_rules: Record<string, true>;
 }
 
-const active_docs = new Set<ExtendedDoc>();
+const active_docs = new CompatSet<ExtendedDoc>();
 let active = 0;
 
 // https://github.com/darkskyapp/string-hash/blob/master/index.js

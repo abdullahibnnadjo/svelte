@@ -1,3 +1,4 @@
+import { CompatSet } from 'svelte/compat';
 import { Readable } from 'svelte/store';
 
 export function noop() {}
@@ -151,7 +152,7 @@ export function exclude_internal_props(props) {
 
 export function compute_rest_props(props, keys) {
 	const rest = {};
-	keys = new Set(keys);
+	keys = new CompatSet(keys);
 	for (const k in props) if (!keys.has(k) && k[0] !== '$') rest[k] = props[k];
 	return rest;
 }

@@ -1,3 +1,4 @@
+import { CompatSet } from 'svelte/compat';
 import { run_all, subscribe, noop, safe_not_equal, is_function, get_store_value } from 'svelte/internal';
 
 /** Callback to inform of a value updates. */
@@ -63,7 +64,7 @@ export function readable<T>(value?: T, start?: StartStopNotifier<T>): Readable<T
  */
 export function writable<T>(value?: T, start: StartStopNotifier<T> = noop): Writable<T> {
 	let stop: Unsubscriber;
-	const subscribers: Set<SubscribeInvalidateTuple<T>> = new Set();
+	const subscribers: Set<SubscribeInvalidateTuple<T>> = new CompatSet();
 
 	function set(new_value: T): void {
 		if (safe_not_equal(value, new_value)) {

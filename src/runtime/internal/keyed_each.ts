@@ -1,5 +1,5 @@
 import { transition_in, transition_out } from './transitions';
-import { CompatMap } from '../compat';
+import { CompatMap, CompatSet } from 'svelte/compat';
 
 export function destroy_block(block, lookup) {
 	block.d(1);
@@ -52,8 +52,8 @@ export function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list
 		if (key in old_indexes) deltas.set(key, Math.abs(i - old_indexes[key]));
 	}
 
-	const will_move = new Set();
-	const did_move = new Set();
+	const will_move = new CompatSet();
+	const did_move = new CompatSet();
 
 	function insert(block) {
 		transition_in(block, 1);
@@ -104,7 +104,7 @@ export function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list
 }
 
 export function validate_each_keys(ctx, list, get_context, get_key) {
-	const keys = new Set();
+	const keys = new CompatSet();
 	for (let i = 0; i < list.length; i++) {
 		const key = get_key(get_context(ctx, list, i));
 		if (keys.has(key)) {

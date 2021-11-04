@@ -1,6 +1,6 @@
 import { run_all } from './utils';
 import { set_current_component } from './lifecycle';
-import { CompatPromise } from '../compat';
+import { CompatPromise, CompatSet } from 'svelte/compat';
 
 export const dirty_components = [];
 export const intros = { enabled: false };
@@ -33,7 +33,7 @@ export function add_flush_callback(fn) {
 }
 
 let flushing = false;
-const seen_callbacks = new Set();
+const seen_callbacks = new CompatSet();
 export function flush() {
 	if (flushing) return;
 	flushing = true;

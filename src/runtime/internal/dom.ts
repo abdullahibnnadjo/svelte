@@ -1,3 +1,4 @@
+import { CompatSet } from 'svelte/compat';
 import { has_prop } from './utils';
 
 // Track which nodes are claimed during hydration. Unclaimed nodes can then be removed from the DOM
@@ -329,7 +330,7 @@ export function xlink_attr(node, attribute, value) {
 }
 
 export function get_binding_group_value(group, __value, checked) {
-	const value = new Set();
+	const value = new CompatSet();
 	for (let i = 0; i < group.length; i += 1) {
 		if (group[i].checked) value.add(group[i].__value);
 	}

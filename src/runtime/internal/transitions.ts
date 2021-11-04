@@ -6,7 +6,7 @@ import { custom_event } from './dom';
 import { add_render_callback } from './scheduler';
 import { TransitionConfig } from '../transition';
 import { Fragment } from './Component';
-import { CompatPromise } from '../compat';
+import { CompatPromise, CompatSet } from 'svelte/compat';
 
 let promise: Promise<void> | null;
 type INTRO = 1;
@@ -41,7 +41,7 @@ function dispatch(node: Element, direction: INTRO | OUTRO | boolean, kind: 'star
 	node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
 }
 
-const outroing = new Set();
+const outroing = new CompatSet();
 let outros: Outro;
 
 export function group_outros() {

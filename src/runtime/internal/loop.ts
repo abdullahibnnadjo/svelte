@@ -1,5 +1,5 @@
 import { raf } from './environment';
-import { CompatSet, CompatPromise } from '../compat';
+import { CompatSet, CompatPromise } from 'svelte/compat';
 
 export interface Task { abort(): void; promise: Promise<void> }
 
