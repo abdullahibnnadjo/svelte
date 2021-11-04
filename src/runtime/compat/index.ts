@@ -31,7 +31,7 @@ const Raf = {
             return;
         }
 
-        //@ts-expect-error window is checked
+        //@ts-ignore window is checked
         if (typeof window.requestAnimiationFrame === 'function') {
             return window.requestAnimationFrame(cb);
         }

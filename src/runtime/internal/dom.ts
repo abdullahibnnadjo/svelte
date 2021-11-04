@@ -261,7 +261,7 @@ export function listen(node: EventTarget, event: string, handler: EventListenerO
 		node.addEventListener('keydown', () => {
 		  const el = document.activeElement;
 
-		  //@ts-expect-error element.type exists on ie
+		  //@ts-ignore element.type exists on ie
 		  if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && el.type === 'text')) {
 			const ev = document.createEvent('CustomEvent');
 			ev.initCustomEvent('input', true, true, {});
