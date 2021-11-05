@@ -1,3 +1,9 @@
+## 2010-dev-with-polyfills branch
+
+A branch exploring technical possibilities to make svelte compatible with older browsers (`since 2010, ie 9`)
+This one tries including directly polyfills and ponyfills.
+It may not be the best solution, as it inlines this code in `svelte/internal`, and that the user may use `core-js` ponyfills for other libraries, resulting in duplicate code (already heavy — +5000 loc).
+
 [![Cybernetically enhanced web apps: Svelte](https://sveltejs.github.io/assets/banner.png)](https://svelte.dev)
 
 
